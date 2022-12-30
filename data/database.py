@@ -4,7 +4,7 @@ import pandas as pd
 
 def create_db() -> None:
     try:
-        sqlite_connection = sqlite3.connect('sqlite_python.db')
+        sqlite_connection = sqlite3.connect('data/sqlite_python.db')
         cursor = sqlite_connection.cursor()
         print("База данных создана и успешно подключена к SQLite")
 
@@ -22,7 +22,7 @@ def create_db() -> None:
 
 def create_table() -> None:
     try:
-        sqlite_connection = sqlite3.connect('sqlite_python.db')
+        sqlite_connection = sqlite3.connect('data/sqlite_python.db')
         sqlite_create_table_query = '''CREATE TABLE pupils (
                                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                                     name TEXT NOT NULL,
@@ -60,7 +60,7 @@ def create_table() -> None:
 def insert_pupil(data: tuple) -> None:
     backup()
     try:
-        sqlite_connection = sqlite3.connect('sqlite_python.db')
+        sqlite_connection = sqlite3.connect('data/sqlite_python.db')
         cursor = sqlite_connection.cursor()
         print("База данных подключена к SQLite")
         name, number, telegram_id = data
@@ -83,7 +83,7 @@ def insert_pupil(data: tuple) -> None:
 def insert_answer(day: str, answer: str, tg_id: int, date: str) -> None:
     backup()
     try:
-        sqlite_connection = sqlite3.connect('sqlite_python.db')
+        sqlite_connection = sqlite3.connect('data/sqlite_python.db')
         cursor = sqlite_connection.cursor()
         print("База данных подключена к SQLite")
         
@@ -120,7 +120,7 @@ def insert_answer(day: str, answer: str, tg_id: int, date: str) -> None:
 
 def select_pupils_name(tg_id: int) -> None:
     try:
-        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('data/sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
@@ -141,7 +141,7 @@ def select_pupils_name(tg_id: int) -> None:
 
 def check_user(tg_id: int):
     try:
-        sqlite_connection = sqlite3.connect('sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
@@ -166,7 +166,7 @@ def check_user(tg_id: int):
 
 def answer_is_none(tg_id: int, day: str):
     try:
-        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('data/sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
@@ -193,8 +193,8 @@ def backup():
         print(f'Скопировано {total-remaining} из {total}...')
 
     try:
-        sqlite_con = sqlite3.connect('sqlite_python.db')
-        backup_con = sqlite3.connect('sqlite_backup.db')
+        sqlite_con = sqlite3.connect('data/sqlite_python.db')
+        backup_con = sqlite3.connect('data/sqlite_backup.db')
         with backup_con:
             sqlite_con.backup(backup_con, pages=3, progress=progress)
         print("Резервное копирование выполнено успешно")
@@ -207,7 +207,7 @@ def backup():
 
 def take_all_info():
     try:
-        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('data/sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
@@ -216,7 +216,7 @@ def take_all_info():
         
         df = pd.read_sql(sqlite_select_query, sqlite_connection)
         print(df)
-        df.to_excel("from_bot/data.xlsx")
+        df.to_excel("data/from_bot/data.xlsx")
         cursor.close()
     except sqlite3.Error as error:
         print("Ошибка при подключении к sqlite", error)
@@ -225,3 +225,10 @@ def take_all_info():
             sqlite_connection.close()
             print("Соединение с SQLite закрыто")
 
+# create_db()
+# create_table()
+# insert_pupil(('Dorofeev Matvey Alexandrovich', '89659594943', 1123456789))
+# name = select_pupils_name(1123456789)
+# print(name*100)
+# print(not check_user(1123345353))
+# insert_answer('dayfirst', 'test', 1123456789, '30.12.2022')
