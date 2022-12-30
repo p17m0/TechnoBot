@@ -4,7 +4,7 @@ import pandas as pd
 
 def create_db() -> None:
     try:
-        sqlite_connection = sqlite3.connect('sqlite_python.db')
+        sqlite_connection = sqlite3.connect('data/sqlite_python.db')
         cursor = sqlite_connection.cursor()
         print("База данных создана и успешно подключена к SQLite")
 
@@ -60,7 +60,7 @@ def create_table() -> None:
 def insert_pupil(data: tuple) -> None:
     backup()
     try:
-        sqlite_connection = sqlite3.connect('data/sqlite_python.db')
+        sqlite_connection = sqlite3.connect('sqlite_python.db')
         cursor = sqlite_connection.cursor()
         print("База данных подключена к SQLite")
         name, number, telegram_id = data
