@@ -161,7 +161,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def data(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Данные."""
     db.take_all_info()
-    data = open("home/TechnoBot/data/from_bot/data.xlsx", 'rb')
+    data = open("home/TechnoBot/data.xlsx", 'rb')
     await update.message.reply_document(data)
 
 
