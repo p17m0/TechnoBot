@@ -4,7 +4,7 @@ import pandas as pd
 
 def create_db() -> None:
     try:
-        sqlite_connection = sqlite3.connect('home/TechnoBot/data/sqlite_python.db')
+        sqlite_connection = sqlite3.connect('sqlite_python.db')
         cursor = sqlite_connection.cursor()
         print("База данных создана и успешно подключена к SQLite")
 
