@@ -215,42 +215,42 @@ async def number(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     context.job_queue.run_once(first_day_alarm, time_alarm_day_1, chat_id=user.id)
     # notification 
     time_alarm_notification_1 = datetime.datetime(2023, 1, 1, 16, 0)
-    job = context.job_queue.run_once(time_alarm_notification_1, notification_1, chat_id=user.id)
+    job = context.job_queue.run_once(notification_1,time_alarm_notification_1,  chat_id=user.id)
     user_data[f'{user.id}jobnote1'] = job.id
     # викторина 2го дня
     time_alarm_day_2 = datetime.datetime(2023, 1, 2, 6, 0)
     context.job_queue.run_once(second_day_alarm, time_alarm_day_2, chat_id=user.id)
     # notification
     time_alarm_notification_2 = datetime.datetime(2023, 1, 2, 16, 0)
-    job = context.job_queue.run_once(time_alarm_notification_2, notification_2, chat_id=user.id)
+    job = context.job_queue.run_once(notification_2, time_alarm_notification_2, chat_id=user.id)
     user_data[f'{user.id}jobnote2'] = job.id
     # викторина 3го дня
     time_alarm_day_3 = datetime.datetime(2023, 1, 3, 6, 0)
     context.job_queue.run_once(third_day_alarm, time_alarm_day_3, chat_id=user.id)
     # notification
     time_alarm_notification_3 = datetime.datetime(2023, 1, 3, 16, 0)
-    job = context.job_queue.run_once(time_alarm_notification_3, notification_3, chat_id=user.id)
+    job = context.job_queue.run_once(notification_3,time_alarm_notification_3, chat_id=user.id)
     user_data[f'{user.id}jobnote3'] = job.id
     # викторина 4го дня
     time_alarm_day_4 = datetime.datetime(2023, 1, 4, 6, 0)
     context.job_queue.run_once(fourth_day_alarm, time_alarm_day_4, chat_id=user.id)
     # notification
     time_alarm_notification_4 = datetime.datetime(2023, 1, 4, 16, 0)
-    job = context.job_queue.run_once(time_alarm_notification_4, notification_4, chat_id=user.id)
+    job = context.job_queue.run_once(notification_4,time_alarm_notification_4, chat_id=user.id)
     user_data[f'{user.id}jobnote4'] = job.id
     # викторина 5го дня
     time_alarm_day_5 = datetime.datetime(2023, 1, 5, 6, 0)
     context.job_queue.run_once(fifth_day_alarm, time_alarm_day_5, chat_id=user.id)
     # notification
     time_alarm_notification_5 = datetime.datetime(2023, 1, 5, 16, 0)
-    job = context.job_queue.run_once(time_alarm_notification_5, notification_5, chat_id=user.id)
+    job = context.job_queue.run_once(notification_5, time_alarm_notification_5, chat_id=user.id)
     user_data[f'{user.id}jobnote5'] = job.id
     # викторина 6го дня
     time_alarm_day_6 = datetime.datetime(2023, 1, 6, 6, 0)
     context.job_queue.run_once(sixth_day_alarm, time_alarm_day_6, chat_id=user.id)
     # notification
     time_alarm_notification_6 = datetime.datetime(2023, 1, 6, 16, 0)
-    job = context.job_queue.run_once(time_alarm_notification_6, notification_6, chat_id=user.id)
+    job = context.job_queue.run_once(notification_6, time_alarm_notification_6, chat_id=user.id)
     user_data[f'{user.id}jobnote6'] = job.id
     # викторина 7го дня
     time_alarm_day_7 = datetime.datetime(2023, 1, 7, 6, 0)
@@ -585,7 +585,7 @@ async def answer_8(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 def main() -> None:
     """Start the bot."""
-    application = Application.builder().token("5555322200:AAGM0Sw9hFe41Bfp-5wFDA-67Roub40sc_Q").build()
+    application = Application.builder().token("5596869051:AAG6MEKfAbLxnohRQfxRSwxsD7VGZbOq7cU").build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
