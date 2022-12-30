@@ -141,7 +141,7 @@ def select_pupils_name(tg_id: int) -> None:
 
 def check_user(tg_id: int):
     try:
-        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('data/sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
@@ -225,8 +225,8 @@ def take_all_info():
             sqlite_connection.close()
             print("Соединение с SQLite закрыто")
 
-# create_db()
-# create_table()
+create_db()
+create_table()
 # insert_pupil(('Dorofeev Matvey Alexandrovich', '89659594943', 1123456789))
 # name = select_pupils_name(1123456789)
 # print(name*100)
