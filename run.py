@@ -31,7 +31,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                 ['Заполнить форму для участия'],
             ]
             reply_markup_start = ReplyKeyboardMarkup(keyboard)
-            photo = open('data/for_bot/first.jpg', 'rb')
+            photo = open('home/TechnoBot/data/for_bot/first.jpg', 'rb')
             await update.message.reply_photo(photo)
             await update.message.reply_text("Для участия в Январском квесте, просим вас заполнить короткую форму с именем ребенка",
                                             reply_markup=reply_markup_start)
@@ -316,12 +316,12 @@ async def second_day_answer(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     day = datetime.datetime.now()
     if day.strftime('%d.%m.%y') in (core.day_2, core.day_3, core.day_4):
         if db.answer_is_none(user.id, "daysecond"):
-            photo_1 = open('data/for_bot/daytwo_shifr.png', 'rb')
+            photo_1 = open('home/TechnoBot/data/for_bot/daytwo_shifr.png', 'rb')
             await update.message.reply_photo(photo_1)
             await update.message.reply_text(
                 core.day_2_phrase,
             )
-            photo_1 = open('data/for_bot/daytwo_answer.png', 'rb')
+            photo_1 = open('home/TechnoBot/data/for_bot/daytwo_answer.png', 'rb')
             await update.message.reply_photo(photo_1)
             user_data = context.user_data
             job = context.job_queue
@@ -440,7 +440,7 @@ async def fifth_day_answer(update: Update, context: ContextTypes.DEFAULT_TYPE) -
             await update.message.reply_text(
                 core.day_5_phrase_1,
             )
-            photo_1 = open('data/for_bot/dayfifth.png', 'rb')
+            photo_1 = open('home/TechnoBot/data/for_bot/dayfifth.png', 'rb')
             await update.message.reply_photo(photo_1)
             await update.message.reply_text(
                 core.day_5_phrase_2,
