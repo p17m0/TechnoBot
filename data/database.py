@@ -2,60 +2,6 @@ import sqlite3
 
 import pandas as pd
 
-def create_db() -> None:
-    try:
-        sqlite_connection = sqlite3.connect('data/sqlite_python.db')
-        cursor = sqlite_connection.cursor()
-        print("База данных создана и успешно подключена к SQLite")
-
-        sqlite_select_query = "select sqlite_version();"
-        cursor.execute(sqlite_select_query)
-        record = cursor.fetchall()
-        print("Версия базы данных SQLite: ", record)
-        cursor.close()
-    except sqlite3.Error as error:
-        print("Ошибка при подключении к sqlite", error)
-    finally:
-        if (sqlite_connection):
-            sqlite_connection.close()
-            print("Соединение с SQLite закрыто")
-
-def create_table() -> None:
-    try:
-        sqlite_connection = sqlite3.connect('data/sqlite_python.db')
-        sqlite_create_table_query = '''CREATE TABLE pupils (
-                                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    name TEXT NOT NULL,
-                                    number TEXT NOT NULL UNIQUE,
-                                    telegram_id INTEGER NOT NULL UNIQUE,
-                                    dayfirst TEXT,
-                                    day1date TEXT,
-                                    daysecond TEXT,
-                                    day2date TEXT,
-                                    daythird TEXT,
-                                    day3date TEXT,
-                                    dayfourth TEXT,
-                                    day4date TEXT,
-                                    dayfifth TEXT,
-                                    day5date TEXT,
-                                    daysixth TEXT,
-                                    day6date TEXT,
-                                    dayseventh TEXT,
-                                    day7date TEXT,
-                                    dayeighth TEXT,
-                                    day8date TEXT);'''
-
-        cursor = sqlite_connection.cursor()
-        print("База данных подключена к SQLite")
-        cursor.execute(sqlite_create_table_query)
-        sqlite_connection.commit()
-        print("Таблица SQLite создана")
-    except sqlite3.Error as error:
-        print("Ошибка при подключении к sqlite", error)
-    finally:
-        if (sqlite_connection):
-            sqlite_connection.close()
-            print("Соединение с SQLite закрыто")
 
 def insert_pupil(data: tuple) -> None:
     backup()
@@ -83,7 +29,7 @@ def insert_pupil(data: tuple) -> None:
 def insert_answer(day: str, answer: str, tg_id: int, date: str) -> None:
     backup()
     try:
-        sqlite_connection = sqlite3.connect('data/sqlite_python.db')
+        sqlite_connection = sqlite3.connect('sqlite_python.db')
         cursor = sqlite_connection.cursor()
         print("База данных подключена к SQLite")
         
@@ -120,7 +66,7 @@ def insert_answer(day: str, answer: str, tg_id: int, date: str) -> None:
 
 def select_pupils_name(tg_id: int) -> None:
     try:
-        sqlite_connection= sqlite3.connect('data/sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
@@ -141,7 +87,7 @@ def select_pupils_name(tg_id: int) -> None:
 
 def check_user(tg_id: int):
     try:
-        sqlite_connection= sqlite3.connect('data/sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
@@ -166,7 +112,7 @@ def check_user(tg_id: int):
 
 def answer_is_none(tg_id: int, day: str):
     try:
-        sqlite_connection= sqlite3.connect('data/sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
@@ -193,8 +139,8 @@ def backup():
         print(f'Скопировано {total-remaining} из {total}...')
 
     try:
-        sqlite_con = sqlite3.connect('data/sqlite_python.db')
-        backup_con = sqlite3.connect('data/sqlite_backup.db')
+        sqlite_con = sqlite3.connect('sqlite_python.db')
+        backup_con = sqlite3.connect('sqlite_backup.db')
         with backup_con:
             sqlite_con.backup(backup_con, pages=3, progress=progress)
         print("Резервное копирование выполнено успешно")
@@ -207,7 +153,7 @@ def backup():
 
 def take_all_info():
     try:
-        sqlite_connection= sqlite3.connect('data/sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
