@@ -87,7 +87,7 @@ def select_pupils_name(tg_id: int) -> None:
 
 def check_user(tg_id: int):
     try:
-        sqlite_connection= sqlite3.connect('sqlite_python.db', timeout=20)
+        sqlite_connection= sqlite3.connect('home/TechnoBot/data/sqlite_python.db', timeout=20)
         cursor = sqlite_connection.cursor()
         print("Подключен к SQLite")
 
