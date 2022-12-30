@@ -22,7 +22,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Приветствие бота."""
     user = update.effective_user
     time_alarm = datetime.datetime.now()
-    if time_alarm.strftime('%d.%m.%y') in ('30.12.22',):
+    if time_alarm.strftime('%d.%m.%y') in ('30.12.22','31.12.22', '01.01.23'):
         if not db.check_user(user.id):
             
             await update.message.reply_text(core.start_phrase)
