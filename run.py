@@ -585,7 +585,7 @@ async def answer_8(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 def main() -> None:
     """Start the bot."""
-    application = Application.builder().token("5596869051:AAG6MEKfAbLxnohRQfxRSwxsD7VGZbOq7cU").build()
+    application = Application.builder().token("5555322200:AAGM0Sw9hFe41Bfp-5wFDA-67Roub40sc_Q").build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
