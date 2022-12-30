@@ -225,8 +225,8 @@ def take_all_info():
             sqlite_connection.close()
             print("Соединение с SQLite закрыто")
 
-create_db()
-create_table()
+# create_db()
+# create_table()
 # insert_pupil(('Dorofeev Matvey Alexandrovich', '89659594943', 1123456789))
 # name = select_pupils_name(1123456789)
 # print(name*100)
