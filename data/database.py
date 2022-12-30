@@ -162,7 +162,7 @@ def take_all_info():
         
         df = pd.read_sql(sqlite_select_query, sqlite_connection)
         print(df)
-        df.to_excel("data/from_bot/data.xlsx")
+        df.to_excel("home/TechnoBot/data.xlsx")
         cursor.close()
     except sqlite3.Error as error:
         print("Ошибка при подключении к sqlite", error)
